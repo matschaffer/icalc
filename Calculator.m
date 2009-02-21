@@ -13,7 +13,7 @@
 
 @synthesize firstOperator, secondOperator;
 
-- (void) dealloc
+- (void)dealloc
 {
   [registers release];
   [firstOperator release];
@@ -29,17 +29,17 @@
   return self;
 }
 
-- (void) push:(NSNumber *)value
+- (void)push:(NSNumber *)value
 {
   [registers addObject:value];
 }
 
-- (NSNumber *) firstValue;
+- (NSNumber *)firstValue;
 {
   return [registers lastObject];
 }
 
-- (NSNumber *) valueAtIndex:(int) index
+- (NSNumber *)valueAtIndex:(int)index
 {
   int size = [registers count];
   int indexToRetrieved = size - 1 - index;
@@ -51,7 +51,7 @@
   }
 }
 
-- (BOOL) popOperators
+- (BOOL)popOperators
 {
   int size = [registers count];
   if (size >= 2) {
@@ -65,7 +65,7 @@
   }
 }
 
-- (void) sum
+- (void)sum
 {
   if ([self popOperators]) {
     NSNumber * result = [[NSNumber alloc] initWithDouble:[firstOperator doubleValue] + [secondOperator doubleValue]];
@@ -73,7 +73,7 @@
   }
 }
 
-- (void) difference
+- (void)difference
 {
   if ([self popOperators]) {
     NSNumber * result = [[NSNumber alloc] initWithDouble:[firstOperator doubleValue] - [secondOperator doubleValue]];
@@ -81,7 +81,7 @@
   }
 }
 
-- (void) product
+- (void)product
 {
   if ([self popOperators]) {
     NSNumber * result = [[NSNumber alloc] initWithDouble:[firstOperator doubleValue] * [secondOperator doubleValue]];
@@ -89,7 +89,7 @@
   }
 }
 
-- (void) ratio
+- (void)ratio
 {
   if ([self popOperators]) {
     NSNumber * result = [[NSNumber alloc] initWithDouble:[firstOperator doubleValue] / [secondOperator doubleValue]];

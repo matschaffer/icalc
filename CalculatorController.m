@@ -10,7 +10,7 @@
 
 
 @implementation CalculatorController
-- (id) init
+- (id)init
 {
   if (self = [super init]) {
     calculator = [[Calculator alloc] init];
@@ -18,13 +18,14 @@
   return self;
 }
 
-- (void) dealloc 
+- (void)dealloc 
 {
   [calculator release];
   [super dealloc];
 }
 
-- (NSString *) valueOrEmptyStringAtIndex:(int)index {
+- (NSString *)valueOrEmptyStringAtIndex:(int)index
+{
   if ([calculator valueAtIndex:index]) {
     return [[calculator valueAtIndex:index] stringValue];
   } else {
@@ -32,7 +33,7 @@
   }
 }
 
-- (void) display
+- (void)display
 {
   [reg3Field setStringValue:[self valueOrEmptyStringAtIndex:2]];    
   [reg2Field setStringValue:[self valueOrEmptyStringAtIndex:1]];    
@@ -40,13 +41,15 @@
   [reg0Field setStringValue:@""];
 }
 
--(void)appendToMain:(NSString*)character {
+- (void)appendToMain:(NSString*)character
+{
 	NSString* currentValue = [reg0Field	stringValue];
 	NSString* newValue = [currentValue stringByAppendingString:character];
 	[reg0Field setStringValue:newValue];
 }
 
--(IBAction)sendPeriod:(NSButton*)sender {
+- (IBAction)sendPeriod:(NSButton*)sender
+{
 	NSString* currentValue = [reg0Field stringValue];
   
 	if ([currentValue length] == 0) {
@@ -56,12 +59,13 @@
 	}
 }
 
--(IBAction)sendNumber:(NSButton*)sender {
+- (IBAction)sendNumber:(NSButton*)sender
+{
   NSLog(@"Got a number: %@", [sender title]);
 	[self appendToMain:[sender title]];
 }
 
--(IBAction)enter:(NSButton*)sender 
+- (IBAction)enter:(NSButton*)sender 
 {
   if ([[reg0Field stringValue] length] > 0) {
     NSNumber * val = [[NSNumber alloc] initWithDouble:[reg0Field doubleValue]];
@@ -74,7 +78,8 @@
 }
 
 
--(IBAction)clear:(NSButton*)sender {
+- (IBAction)clear:(NSButton*)sender
+{
 //	if ([[reg0Field stringValue] length] > 0) {
 //		[reg0Field setStringValue:@"."];
 //	} else {
@@ -82,26 +87,30 @@
 //	}
 }
 
--(IBAction)doAddition:(NSButton*)sender {
-  [self enter:nil];
+- (IBAction)doAddition:(NSButton*)sender
+{
+  [self enter:sender];
   [calculator sum];
   [self display];
 }
 
--(IBAction)doSubtraction:(NSButton*)sender {
-  [self enter:nil];
+- (IBAction)doSubtraction:(NSButton*)sender
+{
+  [self enter:sender];
   [calculator difference];
   [self display];
 }
 
--(IBAction)doMultiplication:(NSButton*)sender {
-  [self enter:nil];
+- (IBAction)doMultiplication:(NSButton*)sender
+{
+  [self enter:sender];
   [calculator product];
   [self display];
 }
 
--(IBAction)doDivision:(NSButton*)sender {
-  [self enter:nil];
+- (IBAction)doDivision:(NSButton*)sender
+{
+  [self enter:sender];
   [calculator ratio];
   [self display];
 }

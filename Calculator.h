@@ -9,22 +9,22 @@
 #import <Cocoa/Cocoa.h>
 
 @interface Calculator : NSObject {
-  NSMutableArray * registers;
-  NSNumber * firstOperator;
-  NSNumber * secondOperator;
+  NSMutableArray *registers;
+  NSNumber       *firstOperator;
+  NSNumber       *secondOperator;
 }
 
-@property(retain) NSNumber * firstOperator;
-@property(retain) NSNumber * secondOperator;
+@property(retain) NSNumber *firstOperator;
+@property(retain) NSNumber *secondOperator;
 
-- (void) push:(NSNumber *)value;
+- (void)push:(NSNumber *)value;
 
-- (NSNumber *) firstValue;
-- (NSNumber *) valueAtIndex:(int) index;
+- (NSNumber *)firstValue;
+- (NSNumber *)valueAtIndex:(int)index;
 
-- (void) sum;
-- (void) difference;
-- (void) product;
-- (void) ratio;
+- (void)sum;
+- (void)difference;
+- (void)product;
+- (void)ratio;
 
 @end

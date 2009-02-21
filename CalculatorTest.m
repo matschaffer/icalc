@@ -16,17 +16,17 @@
 @end
 
 @implementation CalculatorTest
-- (void) setUp
+- (void)setUp
 {
   calculator = [Calculator new];
 }
 
-- (void) tearDown
+- (void)tearDown
 {
   [calculator release];
 }
 
-- (void) testShouldAdd
+- (void)testShouldAdd
 {
   [calculator push:[[NSNumber alloc] initWithInt:1]];
   [calculator push:[[NSNumber alloc] initWithInt:1]];
@@ -36,7 +36,7 @@
   STAssertEquals(2, [[calculator firstValue] intValue], nil);
 }
 
-- (void) testShouldSubtractInOrder 
+- (void)testShouldSubtractInOrder 
 {
   [calculator push:[[NSNumber alloc] initWithInt:2]];
   [calculator push:[[NSNumber alloc] initWithInt:4]];
@@ -46,7 +46,7 @@
   STAssertEquals(-2, [[calculator firstValue] intValue], nil);
 }
 
-- (void) testShouldDisplayRegistersInReverse
+- (void)testShouldDisplayRegistersInReverse
 {
   [calculator push:[[NSNumber alloc] initWithInt:2]];
   [calculator push:[[NSNumber alloc] initWithInt:4]];
@@ -55,7 +55,7 @@
   STAssertEquals(2, [[calculator valueAtIndex:1] intValue], nil);  
 }
 
-- (void) testShouldReturnNilWhenUnusedRegistersAreAccessed
+- (void)testShouldReturnNilWhenUnusedRegistersAreAccessed
 {
   STAssertNil([calculator valueAtIndex:0], nil);
 }

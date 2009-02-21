@@ -18,13 +18,13 @@
   IBOutlet NSTextField *reg3Field;
 }
 
--(IBAction)sendPeriod:(NSButton*)sender;
--(IBAction)sendNumber:(NSButton*)sender;
--(IBAction)enter:(NSButton*)sender;
--(IBAction)clear:(NSButton*)sender;
--(IBAction)doAddition:(NSButton*)sender;
--(IBAction)doSubtraction:(NSButton*)sender;
--(IBAction)doMultiplication:(NSButton*)sender;
--(IBAction)doDivision:(NSButton*)sender;
+- (IBAction)sendPeriod:(NSButton*)sender;
+- (IBAction)sendNumber:(NSButton*)sender;
+- (IBAction)enter:(NSButton*)sender;
+- (IBAction)clear:(NSButton*)sender;
+- (IBAction)doAddition:(NSButton*)sender;
+- (IBAction)doSubtraction:(NSButton*)sender;
+- (IBAction)doMultiplication:(NSButton*)sender;
+- (IBAction)doDivision:(NSButton*)sender;
 
 @end
