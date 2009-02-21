@@ -11,78 +11,90 @@
 
 @implementation Calculator
 
--(void)appendToMain:(NSString*)character {
-	NSString* currentValue = [reg0Field	stringValue];
-	NSString* newValue = [currentValue stringByAppendingString:character];
-	[reg0Field setStringValue:newValue];
+@synthesize firstOperator, secondOperator;
+
+- (void) dealloc
+{
+  [registers release];
+  [firstOperator release];
+  [secondOperator release];
+  [super dealloc];
 }
 
--(IBAction)sendPeriod:(NSButton*)sender {
-	NSString* currentValue = [reg0Field stringValue];
-
-	if ([currentValue length] == 0) {
-		[reg0Field setStringValue:@"0."];
-	} else if ([currentValue rangeOfString:@"."].location == NSNotFound) {
-		[self appendToMain:@"."];
-	}
+- (id)init
+{
+  if (self = [super init]) {
+    registers = [[NSMutableArray alloc] init];
+  }
+  return self;
 }
 
--(IBAction)sendNumber:(NSButton*)sender {
-	[self appendToMain:[sender title]];
+- (void) push:(NSNumber *)value
+{
+  [registers addObject:value];
 }
 
--(IBAction)enter:(NSButton*)sender {
-	[reg3Field setStringValue:[reg2Field stringValue]];
-	[reg2Field setStringValue:[reg1Field stringValue]];
-	[reg1Field setStringValue:[reg0Field stringValue]];
-	[reg0Field setStringValue:@""];
+- (NSNumber *) firstValue;
+{
+  return [registers lastObject];
 }
 
--(void)getOperands {
-	op1 = [reg0Field floatValue];
-	op2 = [reg0Field floatValue];
+- (NSNumber *) valueAtIndex:(int) index
+{
+  int size = [registers count];
+  int indexToRetrieved = size - 1 - index;
+  
+  if (indexToRetrieved >= 0 && indexToRetrieved < size) {
+    return [registers objectAtIndex:indexToRetrieved];
+  } else {
+    return nil;
+  }
 }
 
--(void)setAccumulator:(float)value {
-	[reg0Field setFloatValue:value];
+- (BOOL) popOperators
+{
+  int size = [registers count];
+  if (size >= 2) {
+    self.firstOperator = [registers objectAtIndex:size-2];
+    self.secondOperator = [registers objectAtIndex:size-1];
+    [registers removeLastObject];
+    [registers removeLastObject];
+    return YES;
+  } else {
+    return NO;
+  }
 }
 
--(void)pushDown {
-	[reg1Field setStringValue:[reg2Field stringValue]];	
-	[reg2Field setStringValue:[reg3Field stringValue]];
-	[reg3Field setStringValue:@""];
+- (void) sum
+{
+  if ([self popOperators]) {
+    NSNumber * result = [[NSNumber alloc] initWithDouble:[firstOperator doubleValue] + [secondOperator doubleValue]];
+    [registers addObject:result];
+  }
 }
 
--(IBAction)clear:(NSButton*)sender {
-	if ([[reg0Field stringValue] length] > 0) {
-		[reg0Field setStringValue:@"."];
-	} else {
-		[self pushDown];
-	}
+- (void) difference
+{
+  if ([self popOperators]) {
+    NSNumber * result = [[NSNumber alloc] initWithDouble:[firstOperator doubleValue] - [secondOperator doubleValue]];
+    [registers addObject:result];
+  }
 }
 
--(IBAction)doAddition:(NSButton*)sender {
-	[self getOperands];
-	[self setAccumulator:(op1 + op2)];
-	[self pushDown];
+- (void) product
+{
+  if ([self popOperators]) {
+    NSNumber * result = [[NSNumber alloc] initWithDouble:[firstOperator doubleValue] * [secondOperator doubleValue]];
+    [registers addObject:result];
+  }
 }
 
--(IBAction)doSubtraction:(NSButton*)sender {
-	[self getOperands];
-	[self setAccumulator:(op1 - op2)];
-	[self pushDown];
-}
-
--(IBAction)doMultiplication:(NSButton*)sender {
-	[self getOperands];
-	[self setAccumulator:(op1 * op2)];
-	[self pushDown];
-}
-
--(IBAction)doDivision:(NSButton*)sender {
-	[self getOperands];
-	[self setAccumulator:(op1 / op2)];
-	[self pushDown];
+- (void) ratio
+{
+  if ([self popOperators]) {
+    NSNumber * result = [[NSNumber alloc] initWithDouble:[firstOperator doubleValue] / [secondOperator doubleValue]];
+    [registers addObject:result];
+  }
 }
 
 @end

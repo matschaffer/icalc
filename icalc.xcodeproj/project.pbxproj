@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
 		743072350EEF260200A43471 /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 743072340EEF260200A43471 /* Calculator.m */; };
+		74B42DAD0F509830004E47DD /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74B42DAC0F509830004E47DD /* SenTestingKit.framework */; };
+		74B42DB40F509847004E47DD /* CalculatorTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 74B42DB30F509847004E47DD /* CalculatorTest.m */; };
+		74B42DD80F5098D5004E47DD /* Calculator.m in Sources */ = {isa = PBXBuildFile; fileRef = 743072340EEF260200A43471 /* Calculator.m */; };
+		74DC23E90F468A4700759146 /* CalculatorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74DC23E80F468A4700759146 /* CalculatorController.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -25,11 +29,25 @@
 		32CA4F630368D1EE00C91783 /* icalc_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = icalc_Prefix.pch; sourceTree = "<group>"; };
 		743072330EEF260200A43471 /* Calculator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calculator.h; sourceTree = "<group>"; };
 		743072340EEF260200A43471 /* Calculator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Calculator.m; sourceTree = "<group>"; };
+		74B42DA70F50981C004E47DD /* Test.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = Test.octest; path = build/Debug/Test.octest; sourceTree = "<group>"; };
+		74B42DA80F50981C004E47DD /* Test-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Test-Info.plist"; sourceTree = "<group>"; };
+		74B42DAC0F509830004E47DD /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		74B42DB30F509847004E47DD /* CalculatorTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorTest.m; sourceTree = "<group>"; };
+		74DC23E70F468A4700759146 /* CalculatorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalculatorController.h; sourceTree = "<group>"; };
+		74DC23E80F468A4700759146 /* CalculatorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CalculatorController.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* icalc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = icalc.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		74B42DA40F50981C004E47DD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				74B42DAD0F509830004E47DD /* SenTestingKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D11072E0486CEB800E47090 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -44,6 +62,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				74DC23E70F468A4700759146 /* CalculatorController.h */,
+				74DC23E80F468A4700759146 /* CalculatorController.m */,
 				743072330EEF260200A43471 /* Calculator.h */,
 				743072340EEF260200A43471 /* Calculator.m */,
 			);
@@ -61,6 +81,7 @@
 		1058C7A2FEA54F0111CA2CBB /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				74B42DAC0F509830004E47DD /* SenTestingKit.framework */,
 				29B97324FDCFA39411CA2CEA /* AppKit.framework */,
 				13E42FB307B3F0F600E4EEF1 /* CoreData.framework */,
 				29B97325FDCFA39411CA2CEA /* Foundation.framework */,
@@ -72,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				8D1107320486CEB800E47090 /* icalc.app */,
+				74B42DA70F50981C004E47DD /* Test.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -79,11 +101,13 @@
 		29B97314FDCFA39411CA2CEA /* icalc */ = {
 			isa = PBXGroup;
 			children = (
+				74B42DB10F509834004E47DD /* Tests */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				74B42DA80F50981C004E47DD /* Test-Info.plist */,
 			);
 			name = icalc;
 			sourceTree = "<group>";
@@ -116,9 +140,35 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		74B42DB10F509834004E47DD /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				74B42DB30F509847004E47DD /* CalculatorTest.m */,
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		74B42DA60F50981C004E47DD /* Test */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 74B42DAB0F50981D004E47DD /* Build configuration list for PBXNativeTarget "Test" */;
+			buildPhases = (
+				74B42DA20F50981C004E47DD /* Resources */,
+				74B42DA30F50981C004E47DD /* Sources */,
+				74B42DA40F50981C004E47DD /* Frameworks */,
+				74B42DA50F50981C004E47DD /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Test;
+			productName = Test;
+			productReference = 74B42DA70F50981C004E47DD /* Test.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 		8D1107260486CEB800E47090 /* icalc */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "icalc" */;
@@ -150,11 +200,19 @@
 			projectRoot = "";
 			targets = (
 				8D1107260486CEB800E47090 /* icalc */,
+				74B42DA60F50981C004E47DD /* Test */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		74B42DA20F50981C004E47DD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D1107290486CEB800E47090 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -166,13 +224,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		74B42DA50F50981C004E47DD /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		74B42DA30F50981C004E47DD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				74B42DD80F5098D5004E47DD /* Calculator.m in Sources */,
+				74B42DB40F509847004E47DD /* CalculatorTest.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8D11072C0486CEB800E47090 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				743072350EEF260200A43471 /* Calculator.m in Sources */,
+				74DC23E90F468A4700759146 /* CalculatorController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,6 +282,60 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		74B42DA90F50981D004E47DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				INFOPLIST_FILE = "Test-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = Test;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		74B42DAA0F50981D004E47DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SYSTEM_LIBRARY_DIR)/Frameworks/Cocoa.framework/Headers/Cocoa.h";
+				INFOPLIST_FILE = "Test-Info.plist";
+				INSTALL_PATH = "$(USER_LIBRARY_DIR)/Bundles";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Cocoa,
+					"-framework",
+					SenTestingKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = Test;
+				WRAPPER_EXTENSION = octest;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
 		C01FCF4B08A954540054247B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -258,6 +396,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		74B42DAB0F50981D004E47DD /* Build configuration list for PBXNativeTarget "Test" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				74B42DA90F50981D004E47DD /* Debug */,
+				74B42DAA0F50981D004E47DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "icalc" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

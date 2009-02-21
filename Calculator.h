@@ -9,20 +9,22 @@
 #import <Cocoa/Cocoa.h>
 
 @interface Calculator : NSObject {
-	IBOutlet NSTextField *reg0Field;
-	IBOutlet NSTextField *reg1Field;
-	IBOutlet NSTextField *reg2Field;
-	IBOutlet NSTextField *reg3Field;
-	float op1, op2;
+  NSMutableArray * registers;
+  NSNumber * firstOperator;
+  NSNumber * secondOperator;
 }
 
--(IBAction)sendPeriod:(NSButton*)sender;
--(IBAction)sendNumber:(NSButton*)sender;
--(IBAction)enter:(NSButton*)sender;
--(IBAction)clear:(NSButton*)sender;
--(IBAction)doAddition:(NSButton*)sender;
--(IBAction)doSubtraction:(NSButton*)sender;
--(IBAction)doMultiplication:(NSButton*)sender;
--(IBAction)doDivision:(NSButton*)sender;
+@property(retain) NSNumber * firstOperator;
+@property(retain) NSNumber * secondOperator;
+
+- (void) push:(NSNumber *)value;
+
+- (NSNumber *) firstValue;
+- (NSNumber *) valueAtIndex:(int) index;
+
+- (void) sum;
+- (void) difference;
+- (void) product;
+- (void) ratio;
 
 @end
