@@ -8,7 +8,6 @@
 
 #import "CalculatorController.h"
 
-
 @implementation CalculatorController
 - (id)init
 {
@@ -48,13 +47,16 @@
 	[reg0Field setStringValue:newValue];
 }
 
-- (IBAction)sendPeriod:(NSButton*)sender
+- (BOOL)mainIsEmpty
 {
-	NSString* currentValue = [reg0Field stringValue];
-  
-	if ([currentValue length] == 0) {
+  return [[reg0Field stringValue] length] == 0;
+}
+
+- (IBAction)sendPeriod:(NSButton*)sender
+{  
+	if ([self mainIsEmpty]) {
 		[reg0Field setStringValue:@"0."];
-	} else if ([currentValue rangeOfString:@"."].location == NSNotFound) {
+	} else if ([[reg0Field stringValue] rangeOfString:@"."].location == NSNotFound) {
 		[self appendToMain:@"."];
 	}
 }
@@ -67,7 +69,7 @@
 
 - (IBAction)enter:(NSButton*)sender 
 {
-  if ([[reg0Field stringValue] length] > 0) {
+  if (![self mainIsEmpty]) {
     NSNumber * val = [[NSNumber alloc] initWithDouble:[reg0Field doubleValue]];
     NSLog(@"Pushing %@ into calculator", val);
     [calculator push:val];
@@ -77,14 +79,17 @@
   }
 }
 
-
 - (IBAction)clear:(NSButton*)sender
 {
-//	if ([[reg0Field stringValue] length] > 0) {
-//		[reg0Field setStringValue:@"."];
-//	} else {
-//		[self pushDown];
-//	}
+  if ([self mainIsEmpty]) {
+    [calculator pop];
+    [self display];
+  } else {
+    int indexToTrim = [[reg0Field stringValue] length] - 1;
+    if (indexToTrim >= 0) {
+      [reg0Field setStringValue:[[reg0Field stringValue] substringToIndex:indexToTrim]]; 
+    }
+  }
 }
 
 - (IBAction)doAddition:(NSButton*)sender

@@ -34,6 +34,11 @@
   [registers addObject:value];
 }
 
+- (void)pop
+{
+  [registers removeLastObject];
+}
+
 - (NSNumber *)firstValue;
 {
   return [registers lastObject];

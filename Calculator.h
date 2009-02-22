@@ -18,6 +18,7 @@
 @property(retain) NSNumber *secondOperator;
 
 - (void)push:(NSNumber *)value;
+- (void)pop;
 
 - (NSNumber *)firstValue;
 - (NSNumber *)valueAtIndex:(int)index;

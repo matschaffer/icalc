@@ -60,5 +60,15 @@
   STAssertNil([calculator valueAtIndex:0], nil);
 }
 
+- (void)testCanDropFirstValue
+{
+  [calculator push:[[NSNumber alloc] initWithInt:2]];
+  [calculator push:[[NSNumber alloc] initWithInt:4]];
+
+  [calculator pop];
+
+  STAssertEquals(2, [[calculator valueAtIndex:0] intValue], nil);
+}
+
 
 @end
