@@ -51,11 +51,23 @@
   }
 }
 
-- (BOOL)popOperators
+- (BOOL)popOneOperator
+{
+  int size = [registers count];
+  if (size >= 1) {
+    self.firstOperator = [registers objectAtIndex:size-1];
+    [registers removeLastObject];
+    return YES;
+  } else {
+    return NO;
+  }  
+}
+
+- (BOOL)popTwoOperators
 {
   int size = [registers count];
   if (size >= 2) {
-    self.firstOperator = [registers objectAtIndex:size-2];
+    self.firstOperator  = [registers objectAtIndex:size-2];
     self.secondOperator = [registers objectAtIndex:size-1];
     [registers removeLastObject];
     [registers removeLastObject];
@@ -67,33 +79,44 @@
 
 - (void)sum
 {
-  if ([self popOperators]) {
+  if ([self popTwoOperators]) {
     NSNumber * result = [[NSNumber alloc] initWithDouble:[firstOperator doubleValue] + [secondOperator doubleValue]];
-    [registers addObject:result];
+    [self push:result];
+    [result release];
   }
 }
 
 - (void)difference
 {
-  if ([self popOperators]) {
+  if ([self popTwoOperators]) {
     NSNumber * result = [[NSNumber alloc] initWithDouble:[firstOperator doubleValue] - [secondOperator doubleValue]];
-    [registers addObject:result];
+    [self push:result];
+    [result release];
   }
 }
 
 - (void)product
 {
-  if ([self popOperators]) {
+  if ([self popTwoOperators]) {
     NSNumber * result = [[NSNumber alloc] initWithDouble:[firstOperator doubleValue] * [secondOperator doubleValue]];
-    [registers addObject:result];
+    [self push:result];
+    [result release];
   }
 }
 
 - (void)ratio
 {
-  if ([self popOperators]) {
+  if ([self popTwoOperators]) {
     NSNumber * result = [[NSNumber alloc] initWithDouble:[firstOperator doubleValue] / [secondOperator doubleValue]];
-    [registers addObject:result];
+    [self push:result];
+    [result release];
+  }
+}
+
+- (void)sin
+{
+  if ([self popOneOperator]) {
+    [registers addObject:firstOperator];
   }
 }
 
